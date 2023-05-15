@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lavanderia Self Service</title>
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div class="logo-container">
+                <h1>Lavanderia Self Service</h1>
+                <p>
+                    Developed by <a href="https://www.instagram.com/gabrieldejesus456/">@gabrieldejesus456</a>
+                </p>
+            </div>
+        </header>
+        <main>
+            <div>
+                <div class="login-title-container">
+                    <h1>Hello, there! Please, insert your user and password.</h1>
+                </div>
+                <form class="login-form" action="/login" method="post">
+                    <div>
+                        <input type="text" placeholder="Username:" autocomplete="off" autofocus name="username">
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Password:" name="password">
+                    </div>
+                    <div>
+                        <input class="button button4" type="submit" name="login" value="Log In">
+                        <a href="/register" class="button button4">Register</a>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>
