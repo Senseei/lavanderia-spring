@@ -94,6 +94,6 @@ public class Person {
 		if (getClass() != obj.getClass())
 			return false;
 		Person other = (Person) obj;
-		return Objects.equals(id, other.getId());
+		return Objects.equals(id, other.id);
 	}
 }
