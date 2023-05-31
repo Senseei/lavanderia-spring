@@ -1,5 +1,7 @@
 package com.projects.lavanderia.dto;
 
+import java.util.Objects;
+
 import com.projects.lavanderia.entities.Person;
 import com.projects.lavanderia.projections.PersonProjection;
 
@@ -49,4 +51,21 @@ public class PersonDTO {
     public Double getCash() {
         return cash;
     }
+
+    @Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PersonDTO other = (PersonDTO) obj;
+		return Objects.equals(id, other.id);
+	}
 }

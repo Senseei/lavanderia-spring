@@ -22,7 +22,6 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "person_id")
     private Person person;
-    
     private Date date;
 
     public Order() {}
