@@ -1,19 +1,27 @@
-package com.projects.lavanderia.entities;
+package com.projects.lavanderia.entities.machines;
 
 import java.util.Objects;
 
+import com.projects.lavanderia.entities.Laundry;
+
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_machines")
-public class Machine {
-    
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "machine_type", discriminatorType = DiscriminatorType.STRING)
+public abstract class Machine {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,15 +29,13 @@ public class Machine {
     @ManyToOne
     @JoinColumn(name = "laundry_id")
     private Laundry laundry;
-    private String type;
     private Boolean locked;
 
     public Machine() {}
 
-    public Machine(Long id, Laundry laundry, String type, Boolean locked) {
+    public Machine(Long id, Laundry laundry, Boolean locked) {
         this.id = id;
         this.laundry = laundry;
-        this.type = type;
         this.locked = locked;
     }
 
@@ -47,14 +53,6 @@ public class Machine {
 
     public void setLaundry(Laundry laundry) {
         this.laundry = laundry;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public Boolean isLocked() {

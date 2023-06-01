@@ -1,20 +1,28 @@
 package com.projects.lavanderia.entities;
 
+import java.util.List;
 import java.util.Objects;
+
+import com.projects.lavanderia.entities.machines.Machine;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_laundries")
 public class Laundry {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @OneToMany(mappedBy = "laundry")
+    private List<Machine> machines;
 
     public Laundry() {}
 

@@ -1,12 +1,15 @@
 package com.projects.lavanderia.entities;
 
+import java.util.List;
+import java.util.Objects;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.util.Objects;
 
 @Entity
 @Table(name = "tb_users")
@@ -21,6 +24,9 @@ public class Person {
 
     @Column(columnDefinition = "float DEFAULT 2000.0")
     private Double cash;
+
+    @OneToMany(mappedBy = "person")
+    List<Order> orders;
 
     public Person() {}
 

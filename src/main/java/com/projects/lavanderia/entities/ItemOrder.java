@@ -2,6 +2,8 @@ package com.projects.lavanderia.entities;
 
 import java.util.Objects;
 
+import com.projects.lavanderia.entities.machines.Machine;
+
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -14,9 +16,8 @@ public class ItemOrder {
 
     public ItemOrder() {}
 
-    public ItemOrder(Order order, Person person, Machine machine, Cycle cycle) {
+    public ItemOrder(Order order, Machine machine, Cycle cycle) {
         id.setOrder(order);
-        id.setPerson(person);
         id.setMachine(machine);
         id.setCycle(cycle);
     }
@@ -27,14 +28,6 @@ public class ItemOrder {
 
     public void setOrder(Order order) {
         id.setOrder(order);
-    }
-
-    public Person getPerson() {
-        return id.getPerson();
-    }
-
-    public void setPerson(Person person) {
-        id.setPerson(person);
     }
 
     public Machine getMachine() {

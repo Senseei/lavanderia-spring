@@ -2,6 +2,8 @@ package com.projects.lavanderia.entities;
 
 import java.util.Objects;
 
+import com.projects.lavanderia.entities.machines.Machine;
+
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -14,10 +16,6 @@ public class ItemOrderPK {
     private Order order;
 
     @ManyToOne
-    @JoinColumn(name = "person_id")
-    private Person person;
-
-    @ManyToOne
     @JoinColumn(name = "machine_id")
     private Machine machine;
 
@@ -27,9 +25,8 @@ public class ItemOrderPK {
 
     public ItemOrderPK() {}
 
-    public ItemOrderPK(Order order, Person person, Machine machine, Cycle cycle) {
+    public ItemOrderPK(Order order, Machine machine, Cycle cycle) {
         this.order = order;
-        this.person = person;
         this.machine = machine;
         this.cycle = cycle;
     }
@@ -40,14 +37,6 @@ public class ItemOrderPK {
 
     public void setOrder(Order order) {
         this.order = order;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
     }
 
     public Machine getMachine() {
@@ -68,7 +57,7 @@ public class ItemOrderPK {
 
     @Override
 	public int hashCode() {
-		return Objects.hash(order, person, machine, cycle);
+		return Objects.hash(order, machine, cycle);
 	}
 
 	@Override
@@ -80,7 +69,7 @@ public class ItemOrderPK {
 		if (getClass() != obj.getClass())
 			return false;
 		ItemOrderPK other = (ItemOrderPK) obj;
-		return Objects.equals(order, other.order) && Objects.equals(person, other.person) 
-        && Objects.equals(machine, other.machine) && Objects.equals(cycle, other.cycle);
+		return Objects.equals(order, other.order) && Objects.equals(machine, other.machine)
+        && Objects.equals(cycle, other.cycle);
 	}
 }

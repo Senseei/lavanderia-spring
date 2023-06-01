@@ -1,11 +1,14 @@
 package com.projects.lavanderia.entities;
 
+import java.util.Objects;
+
+import javax.validation.constraints.Positive;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import java.util.Objects;
 
 @Entity
 @Table(name = "tb_cycles")
@@ -13,15 +16,18 @@ public class Cycle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Positive
     private Double price;
-    private Integer seconds;
+    @Positive
+    private Integer minutes;
 
     public Cycle() {}
 
-    public Cycle(Long id, Double price, Integer seconds) {
+    public Cycle(Long id, Double price, Integer minutes) {
         this.id = id;
         this.price = price;
-        this.seconds = seconds;
+        this.minutes = minutes;
     }
 
     public Long getId() {
@@ -40,12 +46,12 @@ public class Cycle {
         this.price = price;
     }
 
-    public Integer getSeconds() {
-        return seconds;
+    public Integer getMinutes() {
+        return minutes;
     }
 
-    public void setSeconds(Integer seconds) {
-        this.seconds = seconds;
+    public void setMinutes(Integer minutes) {
+        this.minutes = minutes;
     }
 
     @Override
